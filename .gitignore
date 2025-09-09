@@ -1,0 +1,6 @@
+*.json
+.venv
+terminal*
+old*
+.idea/
+__pycache__/
