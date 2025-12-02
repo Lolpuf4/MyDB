@@ -110,7 +110,7 @@ def get_where_and_selected_columns(command:str) -> tuple[str, list[str] | None, 
                 where[-1].append(j.strip())
 
     else:
-        name_of_table = command[6:].split("FROM")[1].strip()[:-1]
+        name_of_table = command[6:].split("FROM")[1].strip()
     select_columns = select.split(", ")
 
 

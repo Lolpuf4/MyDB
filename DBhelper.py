@@ -16,17 +16,21 @@ def execute_command(command, user, password, database = ""):
         send_text(socket_test_client, password)
         send_text(socket_test_client, database)
         send_text(socket_test_client, command)
-
         information = recv(socket_test_client)
         if information[0] == "TXT":
+
             return information[1]
         elif information[0] == "ERR":
+
             raise DataBaseError(information[1])
         elif information[0] == "JSN":
+
             file = open(information[1], "r", encoding="UTF-8")
             file_info = json.load(file)
             file.close()
+
             return file_info
+
     except DataBaseError as e:
         print(e)
     finally:
@@ -45,9 +49,10 @@ def execute_command(command, user, password, database = ""):
 
 
 
-print(execute_command("SELECT users.username, messages.text FROM message_history JOIN users ON message_history.senderID = users.id JOIN messages ON message_history.msgID = messages.id WHERE users.id < 2;", "admin", "123", "messenger"))
+#print(execute_command("SELECT users.username, messages.text FROM message_history JOIN users ON message_history.senderID = users.id JOIN messages ON message_history.msgID = messages.id WHERE users.id < 2;", "admin", "123", "messenger"))
 #print(execute_command("SELECT username FROM users WHERE username = ilia;", "admin", "123", "messenger"))
 #print(execute_command("SELECT employees.id, employees.name, departments.department_name FROM employees JOIN departments ON employees.department_id = departments.id;", "admin", "123", "messenger"))
+print(execute_command("SELECT username FROM users;", "admin", "123", "messenger"))
 
 
 

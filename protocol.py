@@ -1,4 +1,5 @@
-HEADER_SIZE = 24
+HEADER_SIZE = 64
+import json
 def get_info(socket, size:int):
     left_to_get = size
     information = b""
@@ -19,8 +20,7 @@ def recv(socket):
     file_name = header_split[2]
     information = get_info(socket, int(size))
     file_name = file_name.replace("*", "")[:-1]
-
-    if data_type == "TXT" or data_type == "ERR":
+    if data_type == "TXT" or data_type == "ERR" or data_type == "DIC":
         return [data_type, information.decode()]
     else:
         file = open(f"recv_files/{file_name}", "wb")
@@ -35,7 +35,7 @@ def _send(socket_recv, data:bytes, file_path:str, type):
     len_path = len(file_path)
     if len_data_size > 8:
         raise ConnectionError("text too large")
-    header = f"{type},{(8 - len_data_size) * "0" + str(data_size)},{(10 - len_path) * "*" + file_path}:"
+    header = f"{type},{(8 - len_data_size) * '0' + str(data_size)},{(50 - len_path) * '*' + file_path}:"
     socket_recv.sendall(header.encode())
     socket_recv.sendall(data)
 
@@ -49,5 +49,10 @@ def send_error(socket_recv, text:str):
 def send_file(socket_recv, file_path:str, type:str):
     file = open(file_path, "rb")
     data = file.read()
-    _send(socket_recv, data, file_path, type)
     file.close()
+    file_path = file_path.split("/")[-1]
+    _send(socket_recv, data, file_path, type)
+
+def send_json(socket_recv, data:dict):
+    encoded = json.dumps(data)
+    _send(socket_recv, encoded.encode(), "", "DIC")
