@@ -5,3 +5,6 @@ old*
 .idea/
 __pycache__/
 protocol
+not_used/terminal client.py
+not_used/terminal program.py
+not_used/PYQT6 client.py

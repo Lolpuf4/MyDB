@@ -108,19 +108,3 @@ def sql_command(username, password, database_name, command):
         json.dump(data, file)
         file.close()
         return "temp.json"
-
-
-        # (make_table(data, select_columns, name_of_table))
-
-    # add OR in select where
-    # order by in SELECT
-    #check for more errors
-    # check for errors that misuse of WHERE might cause
-
-
-#print(program_command("ilia", "123", "/createDatabase test153252;"))
-
-
-#create DB, connect DB
-#log in account
-
