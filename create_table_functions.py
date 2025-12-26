@@ -1,5 +1,5 @@
-from help_functions import*
-from errors import*
+from .help_functions import*
+from .errors import*
 
 
 def get_columns_CREATE_TABLE(command:str) -> tuple[list[str], str]:

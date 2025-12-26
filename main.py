@@ -1,7 +1,7 @@
-from create_table_functions import*
-from insert_into_functions import*
-from select_functions import*
-from DBMS_functions import*
+from .create_table_functions import*
+from .insert_into_functions import*
+from .select_functions import*
+from .DBMS_functions import*
 
 
 

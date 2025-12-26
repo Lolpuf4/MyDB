@@ -1,7 +1,5 @@
-from select import select
-
-from errors import ColumnIsNotInTableError
-from help_functions import get_database_structure
+from .errors import ColumnIsNotInTableError
+from .help_functions import get_database_structure
 
 
 def split_column_name(column_name):

@@ -1,4 +1,4 @@
-from help_functions import*
+from .help_functions import*
 def create_database(command, user):
     db_name = command.split(" ")[1][:-1]
     file = open("meta_tables/data.json", "r", encoding ="UTF-8")

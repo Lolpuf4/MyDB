@@ -1,4 +1,4 @@
-from errors import ColumnIsNotInTableError
+from .errors import ColumnIsNotInTableError
 
 
 def get_ids(database: dict, name_of_table: str) -> list[int]:
