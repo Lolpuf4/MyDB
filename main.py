@@ -2,6 +2,7 @@ from .create_table_functions import*
 from .insert_into_functions import*
 from .select_functions import*
 from .DBMS_functions import*
+from .alter_table_functions import*
 
 
 
@@ -23,26 +24,6 @@ def remove_extra_spaces(command_temp:str) -> str:
                 command += command_temp[i]
     print(command)
     return command
-
-
-def save_database_structure(structure_data: dict, database_name, name):
-    """
-
-    :param structure_data: the structure database file
-    :return: updates the database file
-    """
-    file = open(f"databases/{name}_{database_name}_structure.json", "w", encoding="UTF-8")
-    json.dump(structure_data, file, ensure_ascii=False, indent=4)
-    file.close()
-def save_database(data_base: dict, database_name, name):
-    """
-
-    :param data_base: the database file
-    :return: updates the database file
-    """
-    file = open(f"databases/{name}_{database_name}.json", "w", encoding="UTF-8")
-    json.dump(data_base, file, ensure_ascii=False, indent=4)
-    file.close()
 
 
 
@@ -108,3 +89,10 @@ def sql_command(username, password, database_name, command):
         json.dump(data, file)
         file.close()
         return "temp.json"
+
+    elif command[:11] == "ALTER TABLE":
+        print(command)
+        add(command, username, database_name)
+        return "field added"
+
+

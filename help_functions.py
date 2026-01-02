@@ -19,6 +19,27 @@ def get_database_structure(database, user) -> dict:
     file.close()
     return structure_data
 
+
+def save_database_structure(structure_data: dict, database_name, name):
+    """
+
+    :param structure_data: the structure database file
+    :return: updates the database file
+    """
+    file = open(f"databases/{name}_{database_name}_structure.json", "w", encoding="UTF-8")
+    json.dump(structure_data, file, ensure_ascii=False, indent=4)
+    file.close()
+def save_database(data_base: dict, database_name, name):
+    """
+
+    :param data_base: the database file
+    :return: updates the database file
+    """
+    file = open(f"databases/{name}_{database_name}.json", "w", encoding="UTF-8")
+    json.dump(data_base, file, ensure_ascii=False, indent=4)
+    file.close()
+
+
 def checkForCorrectPerentheses(text):
     parentheses_only_text = ""
     for i in text:
