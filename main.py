@@ -27,7 +27,6 @@ def remove_extra_spaces(command_temp:str) -> str:
 
 
 
-
 def program_command(username, password, command):
     """
 
