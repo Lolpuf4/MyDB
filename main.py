@@ -3,6 +3,7 @@ from .insert_into_functions import*
 from .select_functions import*
 from .DBMS_functions import*
 from .alter_table_functions import*
+from .update_functions import*
 
 
 
@@ -94,4 +95,9 @@ def sql_command(username, password, database_name, command):
         add(command, username, database_name)
         return "field added"
 
+    elif command[:6] == "UPDATE":
+        if command[-1] == ";":
+            command = command[:-1]
+        update(command, database_name, username)
+        return "database updated"
 
