@@ -85,10 +85,7 @@ def sql_command(username, password, database_name, command):
                     raise ColumnIsNotInTableError(column, name_of_table)
 
             data = get_data_with_conditions(data_base, name_of_table, where, select_columns)
-        file = open("temp.json", "w", encoding = "UTF-8")
-        json.dump(data, file)
-        file.close()
-        return "temp.json"
+        return data
 
     elif command[:11] == "ALTER TABLE":
         print(command)
